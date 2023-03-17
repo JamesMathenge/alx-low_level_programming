@@ -10,6 +10,7 @@ int main(void)
 {
 	int digit = 0;
 	char alphabet = 'a';
+
 	while (digit <= 9)
 	{
 		putchar(digit + '0');
