@@ -10,15 +10,20 @@
  */
 int main(void)
 {
-	char password[7];
-	int i;
+	int password_length, i;
+	char password[16];
+	const char charset[] = "abcdefghijklmnopqrstuvwxyz\n"
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\n"
+				"!@#$%^&*()_+{}[];:<>,.?/|";
 
 	srand(time(NULL));
-	for (i = 0; i < 6; i++)
+	password_length = rand() % 16;
+
+	for (i = 0; i < password_length; i++)
 	{
-		password[i] = rand() % 26 + 'a';
+		password[i] = charset[rand() % (sizeof(charset) - 1)];
 	}
-	password[6] = '\0';
-	printf("Random Password: %s\n", password);
+	password[password_length] = '\0';
+	fprintf(stderr, "%s\n", password);
 	return (0);
 }
