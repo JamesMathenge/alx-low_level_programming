@@ -5,7 +5,7 @@
  * @s: represents the string to be searched
  * @accept: represents the set of characters to be matched
  *
- * Return: Always 0 (Success)
+ * Return: the length of a prefix substring
  */
 unsigned int _strspn(char *s, char *accept)
 {
