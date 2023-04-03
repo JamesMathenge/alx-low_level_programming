@@ -5,7 +5,9 @@
  * @s: pointer to a character array s
  * @c: character c that will be checked
  *
- * Return: Always 0 (Success)
+ * Return: a pointer to a character
+ * points to the first occurrence of the character c in the string s
+ * or NULL if the character is not found in the string
  */
 char *_strchr(char *s, char c)
 {
@@ -17,5 +19,5 @@ char *_strchr(char *s, char c)
 		}
 		s++;
 	}
-	return (0);
+	return ('\0');
 }
