@@ -2,8 +2,7 @@
 
 /**
  * print_chessboard - Entry point
- * @a: pointer to an array
- *
+ * @a: pointer to an array of arrays of char type
  * Return: Always 0 (Success)
  */
 void print_chessboard(char (*a)[8])
