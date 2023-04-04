@@ -5,7 +5,8 @@
  * @haystack: pointer in which the search for needle will be performed
  * @needle: pointer to the null-terminated string to be found in haystack
  *
- * Return: Always 0 (success)
+ * Return: a pointer to the beginning of the located substring
+ * else returns null
  */
 char *_strstr(char *haystack, char *needle)
 {
@@ -28,5 +29,5 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack);
 		}
 	}
-	return (0);
+	return ('\0');
 }
