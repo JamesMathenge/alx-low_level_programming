@@ -1,5 +1,7 @@
 #include "main.h"
 
+int _sqrt_recursion_z(int n, int z);
+
 /**
  * _sqrt_recursion - function returning the natural square root of a number
  * @n: number to find the natural square root of
@@ -9,7 +11,9 @@
 
 int _sqrt_recursion(int n)
 {
-	return (_sqrt_recursion(n, 0));
+	if (n < 0)
+		return (-1);
+	return (_sqrt_recursion_z(n, 0));
 }
 
 /**
