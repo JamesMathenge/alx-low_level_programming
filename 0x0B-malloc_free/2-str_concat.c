@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * *str_concat - function returns a pointer to a duplicate new string
+ * str_concat - function returns a pointer to a duplicate new string
  * @s1: string 1
  * @s2: string 2
  * Return: pointer to a duplicate new string else null
@@ -34,7 +34,7 @@ char *str_concat(char *s1, char *s2)
 	{
 		len_1++;
 	}
-	result = (char *) malloc((len_1 + len_2 + 1) * sizeof(char));
+	result = malloc((len_1 * sizeof(*s1)) + (len_2 * sizeof(*s2)) + 1);
 	if (result == NULL)
 	{
 		return (NULL);
