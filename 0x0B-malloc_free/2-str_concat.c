@@ -7,36 +7,31 @@
  * @s2: string 2
  * Return: pointer to a duplicate new string else null
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	char *result;
-	int y, z, len_1, len_2 = 0;
+	int len_1, len_2, y, z;
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
 
-	while (s1[len_1] != '\0')
-		len_1++;
-	while (s2[len_2] != '\0')
-		len_1++;
+	for (len_1 = 0; s1[len_1] != '\0'; len_1++)
+		;
+	for (len_2 = 0; s2[len_2] != '\0'; len_2++)
+		;
 
-	result = malloc((len_1 * sizeof(char)) + (len_2 * sizeof(char)) + 1);
-
-	while (y < len_1)
+	result = malloc((len_1 * sizeof(*s1)) + (len_2 * sizeof(*s2)) + 1);
+	if (result == NULL)
+		return (NULL);
+	for (y = 0, z = 0; y < (len_1 + len_2 + 1); y++)
 	{
+		if (y < len_1)
 		result[y] = s1[y];
-		y++;
+		else
+		result[y] = s2[z++];
 	}
-	while (z < len_2)
-	{
-		result[y] = s2[z];
-		y++;
-		z++;
-	}
-	result[y] = '\0';
 
 	return (result);
 }
