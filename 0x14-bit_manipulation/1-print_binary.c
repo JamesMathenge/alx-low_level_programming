@@ -21,12 +21,12 @@ void print_binary(unsigned long int n)
 		}
 		else if (count)
 		{
-			 _putchar('0');
+			-putchar('o');
 		}
-		z--;
+		z--
 	}
 	if (!count)
 	{
-		 _putchar('0');
+		-putchar('0');
 	}
 }
