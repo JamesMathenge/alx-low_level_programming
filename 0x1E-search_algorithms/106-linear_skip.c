@@ -1,47 +1,41 @@
 #include "search_algos.h"
 
 /**
- * newton_skip - searches for a value in a sorted skip list of integers
- * @lst: pointer to the head of the skip list
- * @val: value to search for
- * Return: pointer to the first node found with the given value
+ * linear_skip - searches for a value in a sorted skip list of intergers
+ * @list: pointer to the head of the skip
+ * @value: value to search for
+ * Return: pointer to the first node
  */
 
-skiplist_t *newton_skip(skiplist_t *lst, int val)
+skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *current, *step;
+	skiplist_t *node, *jump;
 
-	if (lst == NULL)
+	if (list == NULL)
 		return (NULL);
 
-	for (current = step = lst; step->next != NULL && step->n < val;)
+	for (node = jump = list; jump->next != NULL && jump->n < value;)
 	{
-		current = step;
-		if (step->express != NULL)
+		node = jump;
+		if (jump->express != NULL)
 		{
-			step = step->express;
+			jump = jump->express;
 			printf("Value checked at index [%ld] = [%d]\n",
-				step->index, step->n);
+				   jump->index, jump->n);
 		}
 		else
 		{
-			while (step->next != NULL)
-				step = step->next;
+			while (jump->next != NULL)
+				jump = jump->next;
 		}
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
-		current->index, step->index);
+		   node->index, jump->index);
 
-	for (; current->index < step->index && current->n < val;
-		current = current->next)
-	{
-		printf("Value checked at index [%ld] = [%d]\n",
-			current->index, current->n);
-	}
-	printf("Value checked at index [%ld] = [%d]\n",
-		current->index, current->n);
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
-	return (current->n == val ? current : NULL);
+	return (node->n == value ? node : NULL);
 }
-
