@@ -1,39 +1,37 @@
 #include "search_algos.h"
 
 /**
- * custom_interpolation_search - searches for a value in a sorted array
- * @arr: pointer to the first element of the array
- * @arr_size: the number of elements in the array
- * @target: the value to search for
- * Return: first index where the value is located
+ * interpolation_search - searches for a value in a sorted array
+ * @array: pointer to the first element of the array
+ * @size: the number of elements in an array
+ * @value: the value to search for
+ * Return: first index where value is located
  */
 
-int custom_interpolation_search(int *arr, size_t arr_size, int target)
+int interpolation_search(int *array, size_t size, int value)
 {
-	size_t left, right, position;
+	size_t i, l, r;
 
-	if (arr == NULL)
+	if (array == NULL)
 		return (-1);
 
-	for (left = 0, right = arr_size - 1; right >= left;)
+	for (l = 0, r = size - 1; r >= l;)
 	{
-		position = left + (((double)(right - left) / (arr[right] - arr[left]))
-			* (target - arr[left]));
+		i = l + (((double)(r - l) / (array[r] - array[l])) * (value - array[l]));
+		if (i < size)
+			printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+		else
+		{
+			printf("Value checked array[%ld] is out of range\n", i);
+			break;
+		}
 
-	if (position < arr_size)
-		printf("Value checked arr[%ld] = [%d]\n", position, arr[position]);
-	else
-	{
-		printf("Value checked arr[%ld] is out of range\n", position);
-		break;
-	}
-
-	if (arr[position] == target)
-		return (position);
-	if (arr[position] > target)
-		right = position - 1;
-	else
-		left = position + 1;
+		if (array[i] == value)
+			return (i);
+		if (array[i] > value)
+			r = i - 1;
+		else
+			l = i + 1;
 	}
 
 	return (-1);
